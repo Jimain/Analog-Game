@@ -7,7 +7,11 @@ public class GamePlay extends StateBasedGame {
 
 	public GamePlay(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
+				
+		this.addState( new Gameover() );
+		this.addState( new Menu() );
+		this.addState( new Play() );
+
 	}
 
 	public void startGame() throws SlickException {
@@ -21,8 +25,13 @@ public class GamePlay extends StateBasedGame {
 	}
 
 	@Override
-	public void initStatesList(GameContainer arg0) throws SlickException {
-		// TODO Auto-generated method stub
+	public void initStatesList(GameContainer gc) throws SlickException {
+
+		this.getState(0).init(gc, this);
+		this.getState(1).init(gc, this);
+		this.getState(2).init(gc, this);
+		
+		this.enterState(0);
 		
 	}
 
