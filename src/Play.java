@@ -2,15 +2,17 @@ import java.awt.Point;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.InputListener;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Play extends BasicGameState {
+public class Play extends BasicGameState implements InputListener {
 	private int pHeight = 20;
 	private int pWidth = 50;	
 	Point p = new Point();
-	
+	public int mvtExtent = 30;
+
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 		// TODO Auto-generated method stub
@@ -19,7 +21,25 @@ public class Play extends BasicGameState {
 		p = new Point();
 		p.x = 350;
 		p.y = 350;
-
+		System.out.println("Init");
+	}
+	
+	public void keyPressed(int key, char c) {
+		System.out.println(key);
+		switch(key) {
+			case 203:
+				p.x -= mvtExtent;
+				break;
+			case 200:
+				p.y -= mvtExtent;
+				break;
+			case 205:
+				p.x += mvtExtent;
+				break;
+			case 208:
+				p.y += mvtExtent;
+				break;
+		}
 	}
 
 	@Override
