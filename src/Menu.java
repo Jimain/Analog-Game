@@ -18,7 +18,7 @@ public class Menu extends BasicGameState{
 
 	@Override
 	public void render(GameContainer arg0, StateBasedGame arg1, Graphics g) throws SlickException {
-		g.drawString("something", 0, 0);
+		
 	}
 
 	@Override

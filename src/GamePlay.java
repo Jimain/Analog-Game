@@ -31,7 +31,7 @@ public class GamePlay extends StateBasedGame {
 		this.getState(1).init(gc, this);
 		this.getState(2).init(gc, this);
 		
-		this.enterState(0);
+		this.enterState(1);
 		
 	}
 
