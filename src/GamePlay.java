@@ -1,8 +1,17 @@
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
-public class GamePlay {
+public class GamePlay extends StateBasedGame {
 
 	public GamePlay() {
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void initStatesList(GameContainer arg0) throws SlickException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
