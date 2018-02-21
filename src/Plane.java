@@ -1,5 +1,7 @@
 import java.awt.Point;
+import java.util.ArrayList;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 public class Plane {
@@ -7,14 +9,16 @@ public class Plane {
 	private int pWidth = 50;
 	Point p = new Point();
 	public int mvtExtent = 30;
-	
+	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+
 	public Plane() {
 		// create new point for plane location
 		p = new Point();
 		p.x = 350;
 		p.y = 350;
+
 	}
-	
+
 	public void updateLocation(int key) {
 		switch (key) {
 		case 203:
@@ -43,12 +47,28 @@ public class Plane {
 		if (p.y <= 0) {
 			p.y = 0;
 		}
-		
+
 	}
-	
+
+	public void update() {
+
+		for (int i = 0; i < bullets.size(); i++) {
+			if (bullets.get(i).outOfBound()) {
+				bullets.remove(i);
+			}
+		}
+	}
+
 	public void render(Graphics g) {
-		// render rect in position of point
+
+		g.setColor(Color.blue);
 		g.fillRect(p.x, p.y, pWidth, pHeight);
+
+		Bullet bullet = new Bullet(p.x, p.y);
+		bullets.add(bullet);
+		for (int i = 0; i < bullets.size(); i++) {
+			bullets.get(i).render(g);
+		}
 	}
 
 }

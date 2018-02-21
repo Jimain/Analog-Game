@@ -19,7 +19,13 @@ public class Play extends BasicGameState implements InputListener {
 
 	public void keyPressed(int key, char c) {
 		plane.updateLocation(key);
-		
+
+	}
+
+	@Override
+	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException {
+		// TODO Auto-generated method stub
+		plane.update();
 	}
 
 	@Override
@@ -27,12 +33,6 @@ public class Play extends BasicGameState implements InputListener {
 		// TODO Auto-generated method stub
 
 		plane.render(g);
-		
-	}
-
-	@Override
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException {
-		// TODO Auto-generated method stub
 
 	}
 

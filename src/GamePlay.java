@@ -7,21 +7,21 @@ public class GamePlay extends StateBasedGame {
 
 	public GamePlay(String name) {
 		super(name);
-				
-		this.addState( new Gameover() );
-		this.addState( new Menu() );
-		this.addState( new Play() );
+
+		this.addState(new Gameover());
+		this.addState(new Menu());
+		this.addState(new Play());
 
 	}
 
 	public void startGame() throws SlickException {
 		AppGameContainer app = new AppGameContainer(new GamePlay("Analog Game"));
-		
+
 		app.setDisplayMode(800, 800, false);
 		app.setAlwaysRender(true);
-		
+
 		app.start();
-		
+
 	}
 
 	@Override
@@ -30,9 +30,9 @@ public class GamePlay extends StateBasedGame {
 		this.getState(0).init(gc, this);
 		this.getState(1).init(gc, this);
 		this.getState(2).init(gc, this);
-		
+
 		this.enterState(1);
-		
+
 	}
 
 }
