@@ -1,9 +1,10 @@
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.InputListener;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class GamePlay extends StateBasedGame {
+public class GamePlay extends StateBasedGame implements InputListener {
 
 	public GamePlay(String name) {
 		super(name);
@@ -31,6 +32,10 @@ public class GamePlay extends StateBasedGame {
 		this.getState(1).init(gc, this);
 		this.getState(2).init(gc, this);
 
+		this.enterState(0);
+
+	}public void keyPressed(int key, char c) {
+		System.out.println(key);
 		this.enterState(1);
 
 	}
