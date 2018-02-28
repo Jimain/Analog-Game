@@ -18,7 +18,7 @@ public class GamePlay extends StateBasedGame implements MouseListener  {
 	public void startGame() throws SlickException {
 		AppGameContainer app = new AppGameContainer(new GamePlay("Analog Game"));
 
-		app.setDisplayMode(800, 800, false);
+		app.setDisplayMode(595, 800, false);
 		app.setAlwaysRender(true);
 
 		app.start();

@@ -9,10 +9,12 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Play extends BasicGameState implements InputListener {
 	Plane plane;
+	Background background;
 
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
 		// TODO Auto-generated method stub
+		background = new Background();
 		plane = new Plane();
 
 	}
@@ -31,7 +33,7 @@ public class Play extends BasicGameState implements InputListener {
 	@Override
 	public void render(GameContainer arg0, StateBasedGame arg1, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-
+		background.render(g);
 		plane.render(g);
 
 	}
