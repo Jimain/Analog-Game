@@ -63,9 +63,10 @@ public class Plane {
 
 		g.setColor(Color.blue);
 		g.fillRect(p.x, p.y, pWidth, pHeight);
-
-		Bullet bullet = new Bullet(p.x, p.y);
-		bullets.add(bullet);
+		
+		DoubleBullet db = new DoubleBullet(p.x, p.y);
+		db.getBulletList(bullets);
+	
 		for (int i = 0; i < bullets.size(); i++) {
 			bullets.get(i).render(g);
 		}

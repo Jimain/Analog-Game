@@ -13,15 +13,16 @@ public class Bullet {
 	int bH = 6;
 	int speed = 1;
 	Point p = new Point();
-	BD bd = BD.RIGHT;
+	BD bd;
 
 	Color c = new Color(Color.red);
 
-	public Bullet(int x, int y) {
+	public Bullet(int x, int y, BD bulletD) {
 
 		p = new Point();
 		p.x = x;
 		p.y = y;
+		bd = bulletD;
 
 	}
 
