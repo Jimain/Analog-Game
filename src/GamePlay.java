@@ -35,8 +35,10 @@ public class GamePlay extends StateBasedGame implements InputListener {
 		this.enterState(0);
 
 	}public void keyPressed(int key, char c) {
-		System.out.println(key);
-		this.enterState(1);
+		if (  key == 28 ) {
+			this.enterState(1);
+		}
+		
 
 	}
 
