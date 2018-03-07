@@ -10,6 +10,7 @@ public class Plane {
 	Point p = new Point();
 	public int mvtExtent = 30;
 	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+	GunType gT = GunType.TRIPLEB;
 
 	public Plane() {
 		// create new point for plane location
@@ -60,13 +61,32 @@ public class Plane {
 	}
 
 	public void render(Graphics g) {
+		
+		switch(gT) {
+		
+		case DOUBLEB:
+			DoubleBullet db = new DoubleBullet(p.x, p.y, pWidth, pHeight);
+			db.getBulletList(bullets);
+			
+			break;
+			
+		case SINGLEB:
+			SingleBullet sb = new SingleBullet(p.x,p.y, pWidth, pHeight);
+			sb.getBulletList(bullets);
+			
+			break;
+			
+		case TRIPLEB:
+			TripleBullet tb = new TripleBullet(p.x, p.y, pWidth, pHeight);
+			tb.getBulletList(bullets);
+			
+			break;
+			
+		}
 
 		g.setColor(Color.blue);
 		g.fillRect(p.x, p.y, pWidth, pHeight);
 		
-		DoubleBullet db = new DoubleBullet(p.x, p.y);
-		db.getBulletList(bullets);
-	
 		for (int i = 0; i < bullets.size(); i++) {
 			bullets.get(i).render(g);
 		}

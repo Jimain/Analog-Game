@@ -24,8 +24,6 @@ public class Background {
 		
 		counter++;
 		
-		System.out.println( counter);
-		
 		p.setY(p.getY() + speed);
 		
 		g.drawImage( bg, p.getX(), p.getY());
