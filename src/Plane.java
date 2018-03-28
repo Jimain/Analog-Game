@@ -8,9 +8,10 @@ public class Plane {
 	private int pHeight = 20;
 	private int pWidth = 50;
 	Point p = new Point();
-	public int mvtExtent = 30;
+	public int mvtExtent = 4;
 	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	GunType gT = GunType.TRIPLEB;
+	int activeKey;
 
 	public Plane() {
 		// create new point for plane location
@@ -19,9 +20,13 @@ public class Plane {
 		p.y = 350;
 
 	}
+	public void updateDirection( int key) {
+		activeKey = key;
+		
+	}
 
-	public void updateLocation(int key) {
-		switch (key) {
+	public void updateLocation( ) {
+		switch (activeKey) {
 		case 203:
 			p.x -= mvtExtent;
 			break;
@@ -50,8 +55,33 @@ public class Plane {
 		}
 
 	}
+	public void shooting() {
+		
+	}
 
 	public void update() {
+
+		switch (gT) {
+
+		case DOUBLEB:
+			DoubleBullet db = new DoubleBullet(p.x, p.y, pWidth, pHeight);
+			db.getBulletList(bullets);
+
+			break;
+
+		case SINGLEB:
+			SingleBullet sb = new SingleBullet(p.x, p.y, pWidth, pHeight);
+			sb.getBulletList(bullets);
+
+			break;
+
+		case TRIPLEB:
+			TripleBullet tb = new TripleBullet(p.x, p.y, pWidth, pHeight);
+			tb.getBulletList(bullets);
+
+			break;
+
+		}
 
 		for (int i = 0; i < bullets.size(); i++) {
 			if (bullets.get(i).outOfBound()) {
@@ -59,37 +89,29 @@ public class Plane {
 			}
 		}
 	}
+	public Boolean eat() {
+		Boolean eat = false;
+		Item item = new Item();
+		
+		if( p.x == item.p.getX() && p.y == item.p.getY() ) {
+			eat = true;
+			System.out.println( " eat ");
+		}
+
+		return eat;
+		
+	}
 
 	public void render(Graphics g) {
-		
-		switch(gT) {
-		
-		case DOUBLEB:
-			DoubleBullet db = new DoubleBullet(p.x, p.y, pWidth, pHeight);
-			db.getBulletList(bullets);
-			
-			break;
-			
-		case SINGLEB:
-			SingleBullet sb = new SingleBullet(p.x,p.y, pWidth, pHeight);
-			sb.getBulletList(bullets);
-			
-			break;
-			
-		case TRIPLEB:
-			TripleBullet tb = new TripleBullet(p.x, p.y, pWidth, pHeight);
-			tb.getBulletList(bullets);
-			
-			break;
-			
-		}
 
 		g.setColor(Color.blue);
 		g.fillRect(p.x, p.y, pWidth, pHeight);
-		
+
 		for (int i = 0; i < bullets.size(); i++) {
 			bullets.get(i).render(g);
 		}
+		
+	
 	}
 
 }

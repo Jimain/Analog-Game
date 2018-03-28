@@ -15,7 +15,7 @@ public class Bullet {
 	Point p = new Point();
 	BD bd;
 
-	Color c = new Color(Color.red);
+	Color c = new Color(Color.yellow);
 
 	public Bullet(int x, int y, BD bulletD) {
 

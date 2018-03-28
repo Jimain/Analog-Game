@@ -22,11 +22,16 @@ public class Background {
 	}
 	public void render( Graphics g) {
 		
+	
+		g.drawImage( bg, p.getX(), p.getY());
+		
+		
+	}
+	public void update() {
+		
 		counter++;
 		
 		p.setY(p.getY() + speed);
-		
-		g.drawImage( bg, p.getX(), p.getY());
 		
 		
 	}

@@ -4,8 +4,10 @@ import org.newdawn.slick.MouseListener;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class GamePlay extends StateBasedGame implements MouseListener  {
+public class GamePlay extends StateBasedGame    {
 
+	
+	
 	public GamePlay(String name) {
 		super(name);
 
@@ -32,12 +34,8 @@ public class GamePlay extends StateBasedGame implements MouseListener  {
 		this.getState(1).init(gc, this);
 		this.getState(2).init(gc, this);
 
-		this.enterState(0);
-
-	}
-
-	public void mouseClicked(int button, int x, int y,int clickCount) {
 		this.enterState(1);
+
 	}
 
 }
