@@ -28,7 +28,7 @@ public class Play extends BasicGameState implements KeyListener {
 
 		background = new Background();
 		plane = new Plane();
-		items.add(new Item());
+		items.add(new Item( GunType.TRIPLEB));
 		enemies.add(new Enemy());
 		System.out.println("2 times");
 		
@@ -88,13 +88,18 @@ public class Play extends BasicGameState implements KeyListener {
 			for (int i = 0; i < enemies.size(); i++) {
 				enemies.get(i).updateLocation();
 				if (eat( enemies.get(i).p, plane.p, enemies.get(i).enemySize,  enemies.get(i).enemySize, plane.pHeight, plane.pWidth)) {
-					System.out.println("DEAD");
+					plane.dead();
+				} 
+				if( enemies.get(i).outOfBounds() ) {
+					enemies.remove(i);
 				}
 			}
 			
 			for (int i = 0; i < items.size(); i++) {
-				items.get(i).update();
-				if (eat( items.get(i).p, plane.p, items.get(i).itemSize,  items.get(i).itemSize, plane.pHeight, plane.pWidth)) {
+				Item it = items.get(i);
+				it.update();
+				if (eat( it.p, plane.p, it.itemSize, it.itemSize, plane.pHeight, plane.pWidth)) {
+					plane.eatItem( it.gunType );
 					items.remove(i);
 				}
 			}

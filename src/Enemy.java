@@ -10,6 +10,7 @@ public class Enemy {
 	int enemySize = 30;
 	EnemyHelper eHelper = new EnemyHelper();
 	int counter = 0;
+	GameHelper GH = new GameHelper();
 
 	public Enemy() {
 
@@ -38,6 +39,13 @@ public class Enemy {
 				counter = 0;
 			}
 		}
+
+	}
+
+	public boolean outOfBounds() {
+
+		return GH.bottomOutofBound(p);
+
 	}
 
 }

@@ -2,7 +2,7 @@ import org.newdawn.slick.geom.Point;
 
 public class EnemyHelper {
 
-	int speed = 4;
+	int speed = 1;
 
 	public EnemyHelper() {
 
