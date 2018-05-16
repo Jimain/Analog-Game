@@ -25,6 +25,7 @@ public class Plane {
 	Image[] explosion = new Image[16];
 	Boolean IAmDead = false;
 	int Dcounter = 300;
+	int tpcounter = 0;
 
 	public Plane() {
 
@@ -102,6 +103,8 @@ public class Plane {
 		case SINGLEB:
 			SingleBullet sb = new SingleBullet((int) p.getX(), (int) p.getY(), pWidth, pHeight);
 			sb.getBulletList(bullets);
+			
+			tpcounter = 0;
 
 			break;
 
@@ -117,6 +120,13 @@ public class Plane {
 			if (bullets.get(i).outOfBound()) {
 				bullets.remove(i);
 			}
+		}
+		
+		tpcounter++;
+		System.out.println( tpcounter );
+		if( tpcounter > 13) {
+			gT = GunType.SINGLEB;
+			tpcounter = 0;
 		}
 	}
 
@@ -140,6 +150,8 @@ public class Plane {
 	public void eatItem(GunType g) {
 
 		gT = g;
+		
+		tpcounter = 0;
 
 	}
 

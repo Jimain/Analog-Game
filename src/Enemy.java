@@ -30,7 +30,7 @@ public class Enemy {
 		int randomnum = new Random().nextInt(gw);
 
 		p = new Point(randomnum, 0);
-		type = new Random().nextInt(2);
+		type = new Random().nextInt(3);
 
 	}
 
@@ -72,10 +72,34 @@ public class Enemy {
 	}
 
 	public void path2() {
-
+		
+		eHelper.down(p);
+		
+		 if ( counter < 100) {
+			eHelper.right(p);
+			eHelper.down(p);
+		}else if( counter < 200) {
+			eHelper.left(p);
+			eHelper.down(p);
+		}else if  ( counter < 300 ) {
+			eHelper.left(p);
+			eHelper.up(p);
+		}else if ( counter < 400) {
+			eHelper.right(p);
+			eHelper.up(p);
+			
+			if (counter ==  399 ) {
+				counter = 0;
+			}
+		
+		}
 	}
 
 	public void path3() {
+		
+		eHelper.down(p);
+		eHelper.down(p);
+		eHelper.down(p);
 
 	}
 

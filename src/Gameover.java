@@ -11,6 +11,7 @@ public class Gameover extends BasicGameState implements MouseListener{
 	
 	Image exit;
 	Image gameOver;
+	Score scr = Score.getInstance();
 
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
@@ -25,12 +26,16 @@ public class Gameover extends BasicGameState implements MouseListener{
 	public void render(GameContainer arg0, StateBasedGame arg1, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		
+	
 		int gmOverW = (int) (gameOver.getWidth() / 1.5);
 		int gmOverH = (int) (gameOver.getHeight() /1.5) ;
 		
 		g.setBackground(Color.black);
 		gameOver.draw( 595 / 2 - gmOverW/ 2, 800 /2 - gmOverH / 2, gmOverW, gmOverH );
 		exit.draw( 595 / 2 - exit.getWidth()/ 2, 700);
+		
+		g.setColor(Color.white);
+		g.drawString(	Integer.toString(scr.getScore() ), 500 , 0 );
 	
 
 	}

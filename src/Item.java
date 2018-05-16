@@ -15,12 +15,22 @@ public class Item {
 	int dirX = 3;
 	int dirY = 3;
 	boolean launch = true;
-	GunType gunType;
+	GunType gunType = GunType.SINGLEB;
 	Image item;
 
-	public Item( GunType gunT ) {
-	
-		gunType = gunT;
+	public Item() {
+		
+		int luckybox = new Random().nextInt( 3 );
+		
+		System.out.println( "Hello" + luckybox );
+		
+		if ( luckybox == 1 ) {
+			gunType = GunType.DOUBLEB;
+		}else if ( luckybox == 2 ) {
+			gunType = GunType.TRIPLEB;
+		}else {
+			gunType = GunType.SINGLEB;
+		}
 		
 		int x = new Random().nextInt(gW - itemSize);
 		int fx = Math.max(0, x);

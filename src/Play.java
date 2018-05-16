@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.InputListener;
@@ -23,6 +24,7 @@ public class Play extends BasicGameState implements KeyListener {
 	int ecounter = 0;
 	int dcounter = 0;
 	int itemcounter = 0;
+	int score=0;
 	boolean activeKey = false;
 	boolean isPressed = false;
 	int enemyTime;
@@ -32,6 +34,7 @@ public class Play extends BasicGameState implements KeyListener {
 	ArrayList<Item> items = new ArrayList<Item>();
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	StateBasedGame sbg;
+	Score scr = Score.getInstance();
 
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
@@ -52,7 +55,7 @@ public class Play extends BasicGameState implements KeyListener {
 	public void createItem() {
 
 		getItemTime();
-		items.add(new Item(GunType.DOUBLEB));
+		items.add(new Item());
 
 	}
 
@@ -95,7 +98,7 @@ public class Play extends BasicGameState implements KeyListener {
 	@Override
 	public void update(GameContainer gc, StateBasedGame bg, int delta) throws SlickException {
 
-		if (pcounter > 200) {
+		if (pcounter > 700) {
 			plane.update();
 			pcounter = 0;
 		}
@@ -108,6 +111,7 @@ public class Play extends BasicGameState implements KeyListener {
 		if (itcounter > 10) {
 			if (activeKey) {
 				plane.updateLocation();
+				
 			}
 
 			for (int i = 0; i < enemies.size(); i++) {
@@ -161,6 +165,10 @@ public class Play extends BasicGameState implements KeyListener {
 			gameover();
 
 		}
+		
+		
+		
+		scr.setScore(delta);
 		itemcounter += delta;
 		dcounter += delta;
 		pcounter += delta;
@@ -181,6 +189,9 @@ public class Play extends BasicGameState implements KeyListener {
 			enemies.get(i).render(g);
 		}
 		plane.render(g);
+		g.setColor(Color.black);
+		g.drawString(Integer.toString(scr.getScore()), 500 , 0);
+	
 
 	}
 
